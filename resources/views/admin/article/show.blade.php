@@ -26,11 +26,11 @@
                                 {{ $article->desc }}
                             </div>
                             <div class="actions text-center mt-2">
-                                <a href="{{ route('admin.article.index') }}" type="button" class="btn btn-primary">Редактировать</a>
+                                <a href="{{ route('admin.article.edit', $article->id) }}" type="button" class="btn btn-primary">Редактировать</a>
                                 <form action="{{ route('admin.article.destroy', $article->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('admin.article.index') }}" type="button" class="btn btn-danger">Удалить</a>
+                                    <a href="{{ route('admin.article.destroy', $article->id) }}" type="button" class="btn btn-danger">Удалить</a>
                                 </form>
                                 <a href="{{ route('admin.article.index') }}" type="button" class="btn btn-secondary">Вернутся</a>
                             </div>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Article;
 
 use App\Http\Controllers\Admin\Article\BaseController;
 use App\Http\Requests\Article\StoreRequest;
-use App\Models\Article;
 
 class StoreController extends BaseController
 {

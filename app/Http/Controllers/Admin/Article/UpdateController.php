@@ -3,16 +3,16 @@
 
 namespace App\Http\Controllers\Admin\Article;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Article\BaseController;
 use App\Http\Requests\Article\UpdateRequest;
 use App\Models\Article;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
     public function __invoke(UpdateRequest $request, Article $article)
     {
         $data = $request->validated();
-        $article->update($data);
+        $this->service->update($article, $data);
         return redirect(route('admin.article.show', $article->id));
     }
 }
