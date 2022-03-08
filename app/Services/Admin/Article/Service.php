@@ -25,7 +25,7 @@ class Service
 
     public function update(Article $article, $data)
     {
-        if ($data['preview'] !== null) {
+        if (isset($data['preview']) && $data['preview'] !== null) {
             $filename = $article->id . '.' . $data['preview']->extension();
             $data['preview']->storeAs(self::PUBLIC_FILE_PATH, $filename);
         }
