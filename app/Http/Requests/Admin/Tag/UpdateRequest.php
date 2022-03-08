@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Article;
+namespace App\Http\Requests\Admin\Tag;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,9 +25,6 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'desc' => 'required|string',
-            'content' => 'required|string',
-            'preview' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 }

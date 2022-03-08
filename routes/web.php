@@ -25,15 +25,15 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
         Route::patch('/{article}', 'UpdateController')->name('admin.article.update');
         Route::delete('/{article}', 'DestroyController')->name('admin.article.destroy');
     });
-//    Route::group(['namespace' => 'Photo', 'prefix' => 'photo'], function () {
-//        Route::get('/', 'IndexController')->name('admin.photo.index');
-//        Route::get('/create', 'CreateController')->name('admin.photo.create');
-//        Route::get('/{photo}', 'ShowController')->name('admin.photo.show');
-//        Route::get('/{photo}/edit', 'EditController')->name('admin.photo.edit');
-//        Route::post('/store', 'StoreController')->name('admin.photo.store');
-//        Route::patch('/{photo}', 'UpdateController')->name('admin.photo.update');
-//        Route::delete('/{photo}', 'DestroyController')->name('admin.photo.destroy');
-//    });
+    Route::group(['namespace' => 'Tag', 'prefix' => 'tags'], function () {
+        Route::get('/', 'IndexController')->name('admin.tag.index');
+        Route::get('/create', 'CreateController')->name('admin.tag.create');
+        Route::get('/{tag}', 'ShowController')->name('admin.tag.show');
+        Route::get('/{tag}/edit', 'EditController')->name('admin.tag.edit');
+        Route::post('/store', 'StoreController')->name('admin.tag.store');
+        Route::patch('/{tag}', 'UpdateController')->name('admin.tag.update');
+        Route::delete('/{tag}', 'DestroyController')->name('admin.tag.destroy');
+    });
 //    Route::group(['namespace' => 'Theme', 'prefix' => 'theme'], function () {
 //        Route::get('/', 'IndexController')->name('admin.theme.index');
 //        Route::get('/create', 'CreateController')->name('admin.theme.create');
@@ -42,15 +42,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
 //        Route::post('/store', 'StoreController')->name('admin.theme.store');
 //        Route::patch('/{theme}', 'UpdateController')->name('admin.theme.update');
 //        Route::delete('/{theme}', 'DestroyController')->name('admin.theme.destroy');
-//    });
-//    Route::group(['namespace' => 'Visit', 'prefix' => 'visit'], function () {
-//        Route::get('/', 'IndexController')->name('admin.visit.index');
-//        Route::get('/create', 'CreateController')->name('admin.visit.create');
-//        Route::get('/{visit}', 'ShowController')->name('admin.visit.show');
-//        Route::get('/{visit}/edit', 'EditController')->name('admin.visit.edit');
-//        Route::post('/store', 'StoreController')->name('admin.visit.store');
-//        Route::patch('/{visit}', 'UpdateController')->name('admin.visit.update');
-//        Route::delete('/{visit}', 'DestroyController')->name('admin.visit.destroy');
 //    });
 });
 

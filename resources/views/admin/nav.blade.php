@@ -57,6 +57,12 @@
                             <p>Статьи</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.tag.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-tags"></i>
+                            <p>Тэги</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
