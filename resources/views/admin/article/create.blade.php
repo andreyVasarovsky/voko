@@ -42,8 +42,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="region">Контент</label>
-                                    <input type="text" name="content" class="form-control" id="content"
-                                           placeholder="Контент" value="{{ (empty(old('content'))) ? '' : old('content') }}">
+                                    <textarea name="content" id="summernote" cols="30" rows="10">
+                                        {{ (empty(old('content'))) ? '' : old('content') }}
+                                    </textarea>
                                     @error('content')
                                     <div class="text-danger">
                                         {{$message}}

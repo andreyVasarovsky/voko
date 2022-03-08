@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- For bootstrap select -->
@@ -27,8 +28,7 @@
 <script type="text/javascript" src="{{ asset('https://cdn.jsdelivr.net/momentjs/latest/moment.min.js') }}"></script>
 <script src=" {{asset('plugins/daterangepicker/daterangepicker.js')}} "></script>
 <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-
-
+<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
 <!-- For bootstrap select -->
 <script src="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js') }}"></script>
