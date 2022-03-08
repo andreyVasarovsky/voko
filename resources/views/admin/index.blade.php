@@ -45,6 +45,18 @@
                                 <a href="{{ route('admin.tag.index') }}" class="small-box-footer">Смотреть <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3> {{ $categories->count() }} </h3>
+                                    <p>Категории</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ico fas fa-list"></i>
+                                </div>
+                                <a href="{{ route('admin.category.index') }}" class="small-box-footer">Смотреть <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
