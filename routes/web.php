@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'IndexController')->name('admin.index');
-//    Route::group(['namespace' => 'Client', 'prefix' => 'clients'], function () {
-//        Route::get('/', 'IndexController')->name('admin.client.index');
-//        Route::get('/create', 'CreateController')->name('admin.client.create');
-//        Route::get('/{client}', 'ShowController')->name('admin.client.show');
-//        Route::get('/{client}/edit', 'EditController')->name('admin.client.edit');
-//        Route::post('/store', 'StoreController')->name('admin.client.store');
-//        Route::patch('/{client}', 'UpdateController')->name('admin.client.update');
-//        Route::delete('/{client}', 'DestroyController')->name('admin.client.destroy');
-//    });
+    Route::group(['namespace' => 'Article', 'prefix' => 'articles'], function () {
+        Route::get('/', 'IndexController')->name('admin.article.index');
+        Route::get('/create', 'CreateController')->name('admin.article.create');
+        Route::get('/{article}', 'ShowController')->name('admin.article.show');
+        Route::get('/{article}/edit', 'EditController')->name('admin.article.edit');
+        Route::post('/store', 'StoreController')->name('admin.article.store');
+        Route::patch('/{article}', 'UpdateController')->name('admin.article.update');
+        Route::delete('/{article}', 'DestroyController')->name('admin.article.destroy');
+    });
 //    Route::group(['namespace' => 'Photo', 'prefix' => 'photo'], function () {
 //        Route::get('/', 'IndexController')->name('admin.photo.index');
 //        Route::get('/create', 'CreateController')->name('admin.photo.create');

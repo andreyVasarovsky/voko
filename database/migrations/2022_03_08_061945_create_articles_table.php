@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('desc');
             $table->text('content');
-            $table->string('preview');
+            $table->string('preview')->nullable();
             $table->timestamps();
         });
     }
