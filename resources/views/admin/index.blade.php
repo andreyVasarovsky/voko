@@ -37,7 +37,7 @@
                             <div class="small-box bg-secondary">
                                 <div class="inner">
                                     <h3> {{ $tags->count() }} </h3>
-                                    <p>Статьи</p>
+                                    <p>Тэги</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ico fas fa-tags"></i>

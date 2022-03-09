@@ -31,6 +31,9 @@
                                         <div class="title">
                                             {{ $article->title }}
                                         </div>
+                                        <div class="category">
+                                            <span class="badge badge-dark">{{ $article->category->title }}</span>
+                                        </div>
                                         <div class="desc text-center">
                                             {{ $article->desc }}
                                         </div>
@@ -49,6 +52,15 @@
                                                 </button>
                                             </form>
                                         </div>
+                                    </div>
+                                    <div class="article-tag-list text-center mt-2">
+                                        @if($article->tags->count() > 0)
+                                            @foreach($article->tags AS $tag)
+                                                <span class="badge badge-primary">{{ $tag->title }}</span>
+                                            @endforeach
+                                        @else
+                                            &nbsp;
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach

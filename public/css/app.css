@@ -11320,7 +11320,7 @@ body .article-admin-card {
   position: relative;
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.25), 0 0px 4px rgba(0, 0, 0, 0.22);
   display: block;
-  height: 400px;
+  height: 425px;
   padding: 8px;
   text-decoration: none;
   color: #757575;
@@ -11338,6 +11338,10 @@ body .article-admin-card .img-wrapper img {
 body .article-admin-card .title {
   text-align: center;
   font-size: 18px;
+}
+body .article-admin-card .category {
+  text-align: center;
+  font-size: 16px;
 }
 body .article-admin-card .desc {
   height: 50px;
@@ -11368,4 +11372,7 @@ body .article-admin-card .action-list .action + .action {
 }
 body .article-admin-card:hover .action-list {
   display: block;
+}
+body .article-tag-list .badge {
+  font-size: 14px;
 }
