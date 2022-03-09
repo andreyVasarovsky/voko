@@ -21,22 +21,40 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-4">
+                            <h3 class="category" style="position: absolute; top: 4px; right: 18px;"><span
+                                    class="badge badge-secondary">{{ $article->category->title }}</span></h3>
                             <img class="w-100" src="{{ asset($article->preview) }}" alt="Картинка">
                             <div class="desc text-center mt-2">
                                 {{ $article->desc }}
                             </div>
-                            <div class="actions text-center mt-2">
-                                <a href="{{ route('admin.article.edit', $article->id) }}" type="button" class="btn btn-primary">Редактировать</a>
-                                <form action="{{ route('admin.article.destroy', $article->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a href="{{ route('admin.article.destroy', $article->id) }}" type="button" class="btn btn-danger">Удалить</a>
-                                </form>
-                                <a href="{{ route('admin.article.index') }}" type="button" class="btn btn-secondary">Вернутся</a>
-                            </div>
                         </div>
                         <div class="col-8 text-center">
                             {!! $article->content !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            @if($article->tags->count() > 0)
+                                @foreach($article->tags AS $tag)
+                                    <span class="badge badge-primary">{{ $tag->title }}</span>
+                                @endforeach
+                            @else
+                                &nbsp;
+                            @endif
+                        </div>
+                        <div class="col-8">
+                            <div class="actions text-right mt-2">
+                                <a href="{{ route('admin.article.edit', $article->id) }}" type="button"
+                                   class="btn btn-primary">Редактировать</a>
+                                <form action="{{ route('admin.article.destroy', $article->id) }}" method="POST"
+                                      class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="{{ route('admin.article.destroy', $article->id) }}" type="button"
+                                       class="btn btn-danger">Удалить</a>
+                                </form>
+                                <a href="{{ route('admin.article.index') }}" type="button" class="btn btn-secondary">Вернутся</a>
+                            </div>
                         </div>
                     </div>
                 </div>
