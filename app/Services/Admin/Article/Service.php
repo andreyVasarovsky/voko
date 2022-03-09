@@ -15,7 +15,10 @@ class Service
     {
         $preview = $data['preview'];
         unset($data['preview']);
+        $tagIds = isset($data['tag_ids']) ? $data['tag_ids'] : [];
+        unset($data['tag_ids']);
         $article = Article::firstOrCreate($data);
+        $article->tags()->attach($tagIds);
         $filename = $article->id . '.' . $preview->extension();
         $preview->storeAs(self::PUBLIC_FILE_PATH, $filename);
         $article->update(['preview' => self::STORAGE_FILE_PATH . $filename]);
@@ -28,7 +31,10 @@ class Service
             $data['preview']->storeAs(self::PUBLIC_FILE_PATH, $filename);
         }
         unset($data['preview']);
+        $tagIds = isset($data['tag_ids']) ? $data['tag_ids'] : [];
+        unset($data['tag_ids']);
         $article->update($data);
+        $article->tags()->sync($tagIds);
     }
 
     public function delete(Article $article)
