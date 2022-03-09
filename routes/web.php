@@ -33,9 +33,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
     });
 });
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-Route::get('/logout', function () {
-    return view('welcome');
-})->name('logout');
+Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], function () {
+    Route::get('', 'IndexController')->name('public.index');
+    Route::group(['namespace' => 'Article', 'prefix' => 'articles'], function () {
+        Route::get('/', 'IndexController')->name('public.article.index');
+        Route::get('/{article}', 'ShowController')->name('public.article.show');
+    });
+});
+
+Route::get('/logout', function () { return view('home');})->name('logout');

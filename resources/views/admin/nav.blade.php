@@ -10,7 +10,7 @@
                 <a href="{{ route('admin.index') }}" class="nav-link">Админ панель</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ route('home') }}" class="nav-link">Главная</a>
+                <a href="{{ route('public.index') }}" class="nav-link">Главная</a>
             </li>
         </ul>
         <!-- Right navbar links -->

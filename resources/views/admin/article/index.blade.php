@@ -56,7 +56,7 @@
                                     <div class="article-tag-list text-center mt-2">
                                         @if($article->tags->count() > 0)
                                             @foreach($article->tags AS $tag)
-                                                <span class="badge badge-primary">{{ $tag->title }}</span>
+                                                <span class="badge badge-primary mb-2">{{ $tag->title }}</span>
                                             @endforeach
                                         @else
                                             &nbsp;
