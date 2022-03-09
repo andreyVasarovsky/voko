@@ -7,7 +7,8 @@ window.onload = function () {
             ['fontsize', ['fontsize']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
-            ['height', ['height']]
+            ['height', ['height']],
+            ['insert', ['picture']]
         ]
     });
     // $('input[id="visit_date"]').daterangepicker({
