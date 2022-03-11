@@ -25,6 +25,7 @@
     </div>
 </footer>
 <script src=" {{asset('plugins/jquery/jquery.min.js')}} "></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
 <script type="text/javascript" src="{{ asset('https://cdn.jsdelivr.net/momentjs/latest/moment.min.js') }}"></script>
 <script src=" {{asset('plugins/daterangepicker/daterangepicker.js')}} "></script>
 <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>

@@ -18,7 +18,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12">
                             <form action="{{ route('admin.article.update', $article->id) }}" method="POST" enctype="multipart/form-data">
                                 @method('PATCH')
                                 @csrf
