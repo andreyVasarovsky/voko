@@ -86,6 +86,9 @@
                                         {{$message}}
                                     </div>
                                     @enderror
+                                    <div class="alert alert-danger d-none" role="alert" id="img-upload-error">
+                                        Ошибка при загрузке изображения
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="preview">Фото</label>

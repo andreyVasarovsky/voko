@@ -12,31 +12,23 @@ window.onload = function () {
         ],
         callbacks: {
             onImageUpload: function (files) {
+                $('#img-upload-error').addClass('d-none');
                 if (typeof files[0] !== "undefined") {
                     const formData = new FormData();
                     formData.append('image', files[0]);
-                    let csrf = document.querySelector('input[name="_token"]').value;
-                    console.log(csrf);
-                    formData.append('_token', csrf);
-                    formData.append('csrf', csrf);
-
-                    console.log(formData);
-
                     axios.post('/api/admin/articles/images/store', formData)
-                        .then(result => {
-                            console.log(result);
+                        .then(response => {
+                            if (response.data.status){
+                                let imgNode = document.createElement('img');
+                                imgNode.src = response.data.link;
+                                $('#summernote').summernote('insertNode', imgNode);
+                            }else{
+                                $('#img-upload-error').removeClass('d-none');
+                            }
                         })
                         .catch(err => {
-                            console.log(err);
+                            $('#img-upload-error').removeClass('d-none');
                         });
-
-
-                    console.log(files);
-                    // upload image to server and create imgNode...
-                    var imgNode = document.createElement('img');
-                    imgNode.src = 'https://upload.wikimedia.org/wikipedia/commons/3/3c/IMG_logo_%282017%29.svg';
-                    console.log(imgNode);
-                    $('#summernote').summernote('insertNode', imgNode);
                 }
             }
         }
