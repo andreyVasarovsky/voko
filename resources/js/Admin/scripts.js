@@ -18,11 +18,11 @@ window.onload = function () {
                     formData.append('image', files[0]);
                     axios.post('/api/admin/articles/images/store', formData)
                         .then(response => {
-                            if (response.data.status){
+                            if (response.data.status) {
                                 let imgNode = document.createElement('img');
                                 imgNode.src = response.data.link;
                                 $('#summernote').summernote('insertNode', imgNode);
-                            }else{
+                            } else {
                                 $('#img-upload-error').removeClass('d-none');
                             }
                         })
