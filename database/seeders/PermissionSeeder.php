@@ -37,46 +37,52 @@ class PermissionSeeder extends Seeder
             'tag_show',
             'tag_delete',
             'tag_access',
+            'user_create',
+            'user_edit',
+            'user_show',
+            'user_delete',
+            'user_access',
         ];
 
         foreach ($permissions AS $permission){
-            Permission::create([
-                'name' => $permission
-            ]);
+            Permission::firstOrCreate(['name' => $permission]);
         }
 
         //Allow everything
-        Role::create(['name' => 'Super Admin']);
+        Role::firstOrCreate(['name' => 'Super Admin']);
 
 
         //Reader permissions
-        $role = Role::create(['name' => 'Reader']);
+        $role = Role::firstOrCreate(['name' => 'Reader']);
         $readerPermissions = [
             'article_show',
             'article_access',
         ];
-        foreach ($readerPermissions AS $permission){
-            $role->givePermissionTo($permission);
-        }
+        $role->syncPermissions($readerPermissions);
+//        foreach ($readerPermissions AS $permission){
+//            $role->givePermissionTo($permission);
+//        }
         //Writer permissions
-        $role = Role::create(['name' => 'Writer']);
+        $role = Role::firstOrCreate(['name' => 'Writer']);
         $writerPermissions = [
             'article_create',
             'article_show',
             'article_access',
         ];
-        foreach ($writerPermissions AS $permission){
-            $role->givePermissionTo($permission);
-        }
+        $role->syncPermissions($readerPermissions);
+//        foreach ($writerPermissions AS $permission){
+//            $role->givePermissionTo($permission);
+//        }
         //Editor permissions
-        $role = Role::create(['name' => 'Editor']);
+        $role = Role::firstOrCreate(['name' => 'Editor']);
         $editorPermissions = [
             'article_edit',
             'article_show',
             'article_access',
         ];
-        foreach ($editorPermissions AS $permission){
-            $role->givePermissionTo($permission);
-        }
+        $role->syncPermissions($editorPermissions);
+//        foreach ($editorPermissions AS $permission){
+//            $role->givePermissionTo($permission);
+//        }
     }
 }
