@@ -51,38 +51,25 @@ class PermissionSeeder extends Seeder
         //Allow everything
         Role::firstOrCreate(['name' => 'Super Admin']);
 
-
         //Reader permissions
-        $role = Role::firstOrCreate(['name' => 'Reader']);
-        $readerPermissions = [
+        $readerRole = Role::firstOrCreate(['name' => 'Reader']);
+        $readerRole->syncPermissions([
             'article_show',
             'article_access',
-        ];
-        $role->syncPermissions($readerPermissions);
-//        foreach ($readerPermissions AS $permission){
-//            $role->givePermissionTo($permission);
-//        }
+        ]);
         //Writer permissions
-        $role = Role::firstOrCreate(['name' => 'Writer']);
-        $writerPermissions = [
+        $writerRole = Role::firstOrCreate(['name' => 'Writer']);
+        $writerRole->syncPermissions([
             'article_create',
             'article_show',
             'article_access',
-        ];
-        $role->syncPermissions($readerPermissions);
-//        foreach ($writerPermissions AS $permission){
-//            $role->givePermissionTo($permission);
-//        }
+        ]);
         //Editor permissions
-        $role = Role::firstOrCreate(['name' => 'Editor']);
-        $editorPermissions = [
+        $editorRole = Role::firstOrCreate(['name' => 'Editor']);
+        $editorRole->syncPermissions([
             'article_edit',
             'article_show',
             'article_access',
-        ];
-        $role->syncPermissions($editorPermissions);
-//        foreach ($editorPermissions AS $permission){
-//            $role->givePermissionTo($permission);
-//        }
+        ]);
     }
 }
