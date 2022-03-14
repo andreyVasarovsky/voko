@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin\User;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\User\BaseController;
+use Spatie\Permission\Models\Role;
 
-class CreateController extends Controller
+class CreateController extends BaseController
 {
     public function __invoke()
     {
-        return view('admin.user.create');
+        $roles = Role::all();
+        return view('admin.user.create', compact('roles'));
     }
 }

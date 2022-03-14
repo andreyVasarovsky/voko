@@ -28,6 +28,8 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Имя</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Роль</th>
                                         <th scope="col">&nbsp;</th>
                                     </tr>
                                     </thead>
@@ -36,6 +38,16 @@
                                         <tr>
                                             <th scope="row">{{ $user->id }}</th>
                                             <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            @if($user->roles->count() > 0)
+                                                <td>
+                                                    @foreach($user->roles AS $role)
+                                                        {{ $role->name }}
+                                                    @endforeach
+                                                </td>
+                                            @else
+                                                <td>-</td>
+                                            @endif
                                             <td class="actions" style="font-size: 14px;">
                                                 <a href="{{ route('admin.user.show', $user->id) }}" class="action">
                                                     <i class="fas fa-eye"></i>

@@ -37,13 +37,25 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Название</th>
+                                    <th scope="col">Имя</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Роль</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <th scope="row">{{ $user->id }}</th>
                                     <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    @if($user->roles->count() > 0)
+                                        <td>
+                                            @foreach($user->roles AS $role)
+                                                {{ $role->name }}
+                                            @endforeach
+                                        </td>
+                                    @else
+                                        <td>-</td>
+                                    @endif
                                 </tr>
                                 </tbody>
                             </table>

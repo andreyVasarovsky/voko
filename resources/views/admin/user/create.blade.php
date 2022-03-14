@@ -31,6 +31,53 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email"
+                                           placeholder="Email" value="{{ (empty(old('email'))) ? '' : old('email') }}">
+                                    @error('email')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">Роль</label>
+                                    <select name="role_name" class="form-control" id="role">
+                                        <option disabled selected>Выберите роль</option>
+                                        @foreach($roles AS $role)
+                                            <option {{ (old('role_name') == $role->name) ? ' selected' : '' }}
+                                                    value="{{ $role->name }}">
+                                                {{ $role->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('role_name')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Пароль</label>
+                                    <input type="password" name="password" class="form-control" id="password"
+                                           placeholder="Пароль" value="{{ (empty(old('password'))) ? '' : old('password') }}">
+                                    @error('password')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="password_confirmation">Подтвердите пароль</label>
+                                    <input type="password" name="password_confirmation" class="form-control" id="password_confirmation"
+                                           placeholder="Подтвердите пароль" value="{{ (empty(old('password_confirmation'))) ? '' : old('password_confirmation') }}">
+                                    @error('password_confirmation')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Сохранить</button>
                                     <a href="{{ route('admin.user.index') }}" type="button" class="btn btn-danger">Вернутся</a>
                                 </div>

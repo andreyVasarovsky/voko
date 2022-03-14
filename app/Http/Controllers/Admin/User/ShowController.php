@@ -3,10 +3,10 @@
 
 namespace App\Http\Controllers\Admin\User;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\User\BaseController;
 use App\Models\User;
 
-class ShowController extends Controller
+class ShowController extends BaseController
 {
     public function __invoke(User $user)
     {
