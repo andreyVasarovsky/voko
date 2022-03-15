@@ -10,3 +10,13 @@
 <p>After step 4 you will be able to login as Super Admin user.</p>
 <p><strong>Login:</strong> admin@voko.com</p>
 <p><strong>Password:</strong> admin</p>
+<br><br>
+<p><strong>Login:</strong> Reader@Reader.Reader</p>
+<p><strong>Password:</strong> Reader</p>
+<br><br>
+<p><strong>Login:</strong> Writer@Writer.Writer</p>
+<p><strong>Password:</strong> Writer</p>
+<br><br>
+<p><strong>Login:</strong> Editor@Editor.Editor</p>
+<p><strong>Password:</strong> Editor</p>
+

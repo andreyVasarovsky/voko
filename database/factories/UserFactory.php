@@ -19,11 +19,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'admin',
-            'email' => 'admin@voko.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('admin'),
-            'remember_token' => Str::random(10),
+
         ];
     }
 }
