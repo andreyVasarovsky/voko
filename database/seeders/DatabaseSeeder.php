@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\QueryException;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,5 +20,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionSeeder::class,
         ]);
+        try {
+            $user = User::factory(1)->create();
+        }catch (QueryException $exception){
+            $user = User::where('name', 'admin')->first();
+        }
+        $user->assignRole('Super Admin');
     }
 }

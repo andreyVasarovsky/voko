@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
@@ -50,5 +50,4 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
         Route::get('/{article}', 'ShowController')->name('public.article.show');
     });
 });
-
-Route::get('/logout', function () { return view('home');})->name('logout');
+Auth::routes();

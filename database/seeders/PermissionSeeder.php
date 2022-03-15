@@ -22,6 +22,7 @@ class PermissionSeeder extends Seeder
 
         //Create permissions
         $permissions = [
+            'admin_panel_access',
             'article_create',
             'article_edit',
             'article_show',
@@ -63,6 +64,7 @@ class PermissionSeeder extends Seeder
             'article_create',
             'article_show',
             'article_access',
+            'admin_panel_access',
         ]);
         //Editor permissions
         $editorRole = Role::firstOrCreate(['name' => 'Editor']);
@@ -70,6 +72,7 @@ class PermissionSeeder extends Seeder
             'article_edit',
             'article_show',
             'article_access',
+            'admin_panel_access',
         ]);
     }
 }
