@@ -6,7 +6,7 @@
             <div class="col-12 text-center">
                 <h1 class="text-center">{{ $article->title }}</h1>
             </div>
-            <div class="col-4" style="position: relative;">
+            <div class="col-12 col-md-4" style="position: relative;">
                 <span class="badge badge-secondary"
                       style="position: absolute; font-size: 16px; background-color: black; margin: 4px;">{{ $article->category->title }}</span>
                 <img src="{{ asset($article->preview) }}" class="img-fluid rounded w-100" alt="Preview">
@@ -20,7 +20,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-8 text-center">
+            <div class="col-12 col-md-8 text-center">
                 {!! $article->content !!}
             </div>
         </div>
