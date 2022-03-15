@@ -12,7 +12,7 @@ class UpdateController extends BaseController
     public function __invoke(UpdateRequest $request, User $user)
     {
         $data = $request->validated();
-        $user->update($data);
+        $this->service->update($user, $data);
         return redirect(route('admin.user.show', $user->id));
     }
 }

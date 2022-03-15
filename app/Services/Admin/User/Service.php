@@ -19,13 +19,16 @@ class Service
         }
     }
 
-    public function update(User $article, $data)
+    public function update(User $user, $data)
     {
-
+        $role = $data['role_name'] ?? '';
+        unset($data['role_name']);
+        $user->update($data);
+        $user->syncRoles($role);
     }
 
-    public function delete(User $article)
+    public function delete(User $user)
     {
-
+        $user->delete();
     }
 }

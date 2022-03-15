@@ -33,6 +33,32 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="role">Роль</label>
+                                    <select name="role_name" class="form-control" id="role">
+                                        @foreach($roles AS $role)
+                                            <option {{ (old('role_name') == $role->name) ? ' selected' : ($role->name == $user->roles->first()->name ? ' selected' : '') }}
+                                                    value="{{ $role->name }}">
+                                                {{ $role->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('role_name')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email"
+                                           placeholder="Email" value="{{ (empty(old('email'))) ? $user->email : old('email') }}">
+                                    @error('email')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Обновить</button>
                                     <a href="{{ route('admin.user.index') }}" type="button" class="btn btn-danger">К списку</a>
                                 </div>
