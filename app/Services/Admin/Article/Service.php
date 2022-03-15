@@ -4,6 +4,7 @@
 namespace App\Services\Admin\Article;
 
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class Service
@@ -17,6 +18,7 @@ class Service
         unset($data['preview']);
         $tagIds = isset($data['tag_ids']) ? $data['tag_ids'] : [];
         unset($data['tag_ids']);
+        $data['user_id'] = Auth::user()->id;
         $article = Article::firstOrCreate($data);
         $article->tags()->attach($tagIds);
         $filename = $article->id . '.' . $preview->extension();

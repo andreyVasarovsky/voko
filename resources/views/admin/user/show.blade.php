@@ -20,12 +20,14 @@
                                     <i class="fas fa-trash-alt link-icon text-danger" role="button"></i>
                                 </button>
                             </form>
-                            @if($errors->any())
-                                <div class="alert alert-danger mt-2" role="alert">
+                        </div>
+                        @if($errors->any())
+                            <div class="col-12">
+                                <div class="alert alert-danger" role="alert">
                                     {{ $errors->first() }}
                                 </div>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -59,8 +61,33 @@
                                 </tr>
                                 </tbody>
                             </table>
-
                             <a href="{{ route('admin.user.index') }}" type="button" class="btn btn-danger">Вернутся</a>
+                        </div>
+                        <div class="col-6">
+                            <table class="table close-borders">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Статья</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if($user->articles->count() > 0)
+                                    @foreach($user->articles AS $article)
+                                        <tr>
+                                            <td>{{ $article->id }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.article.show', $article->id) }}">{{ $article->title }}</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="2">Пусто</td>
+                                    </tr>
+                                @endif
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

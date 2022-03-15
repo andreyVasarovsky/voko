@@ -15,6 +15,13 @@
                             <a href="{{ route('admin.user.create') }}" type="button"
                                class="btn btn-sm btn-success d-inline">Добавить</a>
                         </div>
+                        @if($errors->any())
+                            <div class="col-12">
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $errors->first() }}
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -30,6 +37,7 @@
                                         <th scope="col">Имя</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Роль</th>
+                                        <th scope="col">Кол-во статей</th>
                                         <th scope="col">&nbsp;</th>
                                     </tr>
                                     </thead>
@@ -48,6 +56,7 @@
                                             @else
                                                 <td>-</td>
                                             @endif
+                                            <td>{{ $user->articles->count() }}</td>
                                             <td class="actions" style="font-size: 14px;">
                                                 <a href="{{ route('admin.user.show', $user->id) }}" class="action">
                                                     <i class="fas fa-eye"></i>

@@ -16,4 +16,8 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $guarded = [];
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'user_id', 'id');
+    }
 }

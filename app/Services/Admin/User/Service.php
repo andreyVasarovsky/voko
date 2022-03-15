@@ -27,8 +27,17 @@ class Service
         $user->syncRoles($role);
     }
 
-    public function delete(User $user)
+    public function delete(User $user): array
     {
+        if ($user->articles->count() > 0) {
+            return [
+                'status' => false,
+                'msg' => 'Нельзя удалять пользователя у которого есть написанные статьи!'
+            ];
+        }
+
         $user->delete();
+
+        return ['status' => true, 'msg' => ''];
     }
 }
