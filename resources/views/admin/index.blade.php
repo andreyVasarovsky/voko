@@ -21,54 +21,66 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-primary">
-                                <div class="inner">
-                                    <h3> {{ $articles->count() }} </h3>
-                                    <p>Статьи</p>
+                        @if(Auth::user()->can('article_access'))
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-primary">
+                                    <div class="inner">
+                                        <h3> {{ $articles->count() }} </h3>
+                                        <p>Статьи</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ico fas fa-align-justify"></i>
+                                    </div>
+                                    <a href="{{ route('admin.article.index') }}" class="small-box-footer">Смотреть <i
+                                            class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                                <div class="icon">
-                                    <i class="ico fas fa-align-justify"></i>
-                                </div>
-                                <a href="{{ route('admin.article.index') }}" class="small-box-footer">Смотреть <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-secondary">
-                                <div class="inner">
-                                    <h3> {{ $tags->count() }} </h3>
-                                    <p>Тэги</p>
+                        @endif
+                        @if(Auth::user()->can('tag_access'))
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-secondary">
+                                    <div class="inner">
+                                        <h3> {{ $tags->count() }} </h3>
+                                        <p>Тэги</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ico fas fa-tags"></i>
+                                    </div>
+                                    <a href="{{ route('admin.tag.index') }}" class="small-box-footer">Смотреть <i
+                                            class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                                <div class="icon">
-                                    <i class="ico fas fa-tags"></i>
-                                </div>
-                                <a href="{{ route('admin.tag.index') }}" class="small-box-footer">Смотреть <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3> {{ $categories->count() }} </h3>
-                                    <p>Категории</p>
+                        @endif
+                        @if(Auth::user()->can('category_access'))
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h3> {{ $categories->count() }} </h3>
+                                        <p>Категории</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ico fas fa-list"></i>
+                                    </div>
+                                    <a href="{{ route('admin.category.index') }}" class="small-box-footer">Смотреть <i
+                                            class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                                <div class="icon">
-                                    <i class="ico fas fa-list"></i>
-                                </div>
-                                <a href="{{ route('admin.category.index') }}" class="small-box-footer">Смотреть <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3> {{ $users->count() }} </h3>
-                                    <p>Пользователи</p>
+                        @endif
+                        @if(Auth::user()->can('user_access'))
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h3> {{ $users->count() }} </h3>
+                                        <p>Пользователи</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ico fas fa-user"></i>
+                                    </div>
+                                    <a href="{{ route('admin.user.index') }}" class="small-box-footer">Смотреть <i
+                                            class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                                <div class="icon">
-                                    <i class="ico fas fa-user"></i>
-                                </div>
-                                <a href="{{ route('admin.user.index') }}" class="small-box-footer">Смотреть <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </section>

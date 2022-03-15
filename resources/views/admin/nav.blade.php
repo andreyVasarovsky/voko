@@ -16,7 +16,8 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+                <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"
+                   role="button">
                     <i class="fas fa-th-large"></i>
                 </a>
             </li>
@@ -42,39 +43,49 @@
                     <img src="{{ asset('dist/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block" style="line-height: 14px;">
-                        User name <br>
-                        <span style="font-size: 12px;"> User email </span>
+                    <a href="{{ route('admin.user.edit', Auth::user()->id) }}" class="d-block"
+                       style="line-height: 14px;">
+                        {{ Auth::user()->name }} <br>
+                        <span style="font-size: 12px;"> {{ Auth::user()->email }} </span>
                     </a>
                 </div>
             </div>
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="{{ route('admin.article.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-align-justify"></i>
-                            <p>Статьи</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.tag.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-tags"></i>
-                            <p>Тэги</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.category.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-list"></i>
-                            <p>Категории</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.user.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>Пользователи</p>
-                        </a>
-                    </li>
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    @if(Auth::user()->can('article_access'))
+                        <li class="nav-item">
+                            <a href="{{ route('admin.article.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-align-justify"></i>
+                                <p>Статьи</p>
+                            </a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->can('tag_access'))
+                        <li class="nav-item">
+                            <a href="{{ route('admin.tag.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>Тэги</p>
+                            </a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->can('category_access'))
+                        <li class="nav-item">
+                            <a href="{{ route('admin.category.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Категории</p>
+                            </a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->can('user_access'))
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>Пользователи</p>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
