@@ -50,4 +50,4 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
         Route::get('/{article}', 'ShowController')->name('public.article.show');
     });
 });
-Auth::routes();
+Auth::routes(['verify' => true]);

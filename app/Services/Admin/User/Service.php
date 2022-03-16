@@ -4,6 +4,7 @@
 namespace App\Services\Admin\User;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 
 class Service
@@ -17,6 +18,7 @@ class Service
         if (!empty($role)){
             $user->assignRole($role);
         }
+        event(new Registered($user));
     }
 
     public function update(User $user, $data)
