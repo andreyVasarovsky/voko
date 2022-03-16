@@ -24,6 +24,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Комментарий</th>
+                                        <th scope="col">Автор</th>
                                         <th scope="col">&nbsp;</th>
                                     </tr>
                                     </thead>
@@ -32,6 +33,9 @@
                                         <tr>
                                             <th scope="row">{{ $comment->id }}</th>
                                             <td>{{ $comment->text }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.user.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
+                                            </td>
                                             <td class="actions" style="font-size: 14px;">
                                                 <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST" class="action">
                                                     @csrf

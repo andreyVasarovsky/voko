@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Public\Comment\StoreController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comments', 'middleware' => ['can:comment_access']], function () {
         Route::get('/', 'IndexController')->name('admin.comment.index');
+        Route::delete('/{comment}', 'DestroyController')->name('admin.comment.destroy');
     });
 });
 
@@ -51,6 +53,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
     Route::group(['namespace' => 'Article', 'prefix' => 'articles'], function () {
         Route::get('/', 'IndexController')->name('public.article.index');
         Route::get('/{article}', 'ShowController')->name('public.article.show');
+    });
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
+        Route::post('/store', 'StoreController')->name('public.comment.store');
     });
 });
 Auth::routes(['verify' => true]);
