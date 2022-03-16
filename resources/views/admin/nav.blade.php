@@ -80,6 +80,14 @@
                             </a>
                         </li>
                     @endif
+                    @if(Auth::user()->can('comment_access'))
+                        <li class="nav-item">
+                            <a href="{{ route('admin.comment.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-comment"></i>
+                                <p>Комментарии</p>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

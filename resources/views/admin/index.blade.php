@@ -81,6 +81,21 @@
                                 </div>
                             </div>
                         @endif
+                        @if(Auth::user()->can('comment_access'))
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-danger">
+                                    <div class="inner">
+                                        <h3> {{ $comments->count() }} </h3>
+                                        <p>Комментарии</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ico fas fa-comment"></i>
+                                    </div>
+                                    <a href="{{ route('admin.comment.index') }}" class="small-box-footer">Смотреть <i
+                                            class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </section>

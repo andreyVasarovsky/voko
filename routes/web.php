@@ -41,6 +41,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
         Route::patch('/{user}', 'UpdateController')->name('admin.user.update');
         Route::delete('/{user}', 'DestroyController')->name('admin.user.destroy');
     });
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comments', 'middleware' => ['can:comment_access']], function () {
+        Route::get('/', 'IndexController')->name('admin.comment.index');
+    });
 });
 
 Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], function () {
