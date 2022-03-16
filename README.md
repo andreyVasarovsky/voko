@@ -5,6 +5,7 @@
     <li>Step #2) Composer install all dependencies;</li>
     <li>Step #3) Run "php artisan migrate";</li>
     <li>Step #4) Run "php artisan db:seed" to create all roles.</li>
+    <li>Step #5) Run "php artisan queue:work" to turn on registration verification emails</li>
 </ul>
 
 <p>After step 4 you will be able to login as Super Admin user.</p>
