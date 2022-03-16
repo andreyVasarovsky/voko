@@ -55,6 +55,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
         Route::get('/{article}', 'ShowController')->name('public.article.show');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
+        Route::get('/store', function () { abort(404); });
         Route::post('/store', 'StoreController')->name('public.comment.store');
     });
 });

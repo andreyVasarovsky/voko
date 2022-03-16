@@ -9,7 +9,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6 align-items-center">
-                            <h1 class="m-0 d-inline">Статья: {{ $article->title }}</h1>
+                            <h1 class="m-0 d-inline">Статья: {{ $article->title }} ({{ $article->comments->count() }} комментариев)</h1>
                         </div>
                         @if(session('error'))
                             <div class="col-12 alert alert-danger">{{ session('error') }}</div>
@@ -62,6 +62,30 @@
                                        class="btn btn-secondary">Вернутся</a>
                                 @endif
                             </div>
+                        </div>
+                        <div class="col-4">
+                            <table class="table close-borders">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Комментарий</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if($article->comments->count() > 0)
+                                    @foreach($article->comments AS $comment)
+                                        <tr>
+                                            <td>{{ $comment->id }}</td>
+                                            <td>{{ $comment->text }}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="2">Пусто</td>
+                                    </tr>
+                                @endif
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12">
                             @if($users->count() > 0)
                                 <table class="table table-hover hover-table-actions close-borders">
                                     <thead>
@@ -38,6 +38,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Роль</th>
                                         <th scope="col">Кол-во статей</th>
+                                        <th scope="col">Кол-во комментариев</th>
                                         <th scope="col">&nbsp;</th>
                                     </tr>
                                     </thead>
@@ -57,6 +58,7 @@
                                                 <td>-</td>
                                             @endif
                                             <td>{{ $user->articles->count() }}</td>
+                                            <td>{{ $user->comments->count() }}</td>
                                             <td class="actions" style="font-size: 14px;">
                                                 <a href="{{ route('admin.user.show', $user->id) }}" class="action">
                                                     <i class="fas fa-eye"></i>

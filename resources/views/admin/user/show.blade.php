@@ -89,6 +89,34 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="offset-6 col-6">
+                            <table class="table close-borders">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Комментарий</th>
+                                    <th scope="col">Статья</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if($user->comments->count() > 0)
+                                    @foreach($user->comments AS $comment)
+                                        <tr>
+                                            <td>{{ $comment->id }}</td>
+                                            <td>{{ $comment->text }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.article.show', $comment->article->id) }}">{{ $comment->article->title }}</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="2">Пусто</td>
+                                    </tr>
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </section>

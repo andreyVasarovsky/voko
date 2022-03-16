@@ -37,7 +37,8 @@
                                             <span class="badge badge-dark">{{ $article->category->title }}</span>
                                         </div>
                                         <div class="desc text-center">
-                                            {{ $article->desc }}
+                                            {{ $article->desc }}<br>
+                                            <span>({{ $article->comments->count() }} комментариев)</span>
                                         </div>
                                         <div class="action-list text-center mt-2">
                                             @if(Auth::user()->can('article_show'))
