@@ -43,6 +43,11 @@ class PermissionSeeder extends Seeder
             'user_show',
             'user_delete',
             'user_access',
+            'comment_create',
+            'comment_edit',
+            'comment_show',
+            'comment_delete',
+            'comment_access',
         ];
 
         foreach ($permissions AS $permission){
