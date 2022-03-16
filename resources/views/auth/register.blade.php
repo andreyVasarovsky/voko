@@ -60,6 +60,18 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        @if(config('services.recaptcha.key'))
+                            <div class="row mb-3">
+                                <div class="g-recaptcha offset-md-4 col-md-6"
+                                     data-sitekey="{{config('services.recaptcha.key')}}">
+                                </div>
+                                @error('g-recaptcha-response')
+                                <div class="offset-md-4 col-md-6">
+                                    <strong class="text-danger">{{ $message }}</strong>
+                                </div>
+                                @enderror
+                            </div>
+                        @endif
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

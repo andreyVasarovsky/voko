@@ -53,7 +53,18 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'g-recaptcha-response' => ['required', 'recaptcha']
         ]);
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => 'The :attribute field is required.',
+            'email' => 'The :attribute must use a valid email address',
+            'g-recaptcha-response.recaptcha' => 'Captcha verification failed',
+            'g-recaptcha-response.required' => 'Please complete the captcha'
+        ];
     }
 
     /**
