@@ -67,11 +67,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
         Route::get('/store', function () { abort(404); });
         Route::post('/store', 'StoreController')->name('public.comment.store');
     });
-    Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
-        Route::get('/{user}/edit', 'EditController')->name('public.profile.edit')->middleware('can:profile_edit');
-        Route::patch('/{user}', 'UpdateController')->name('public.profile.update')->middleware('can:profile_edit');
-
-//
+    Route::middleware('is_editable_profile_self')->group(function () {
+        Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
+            Route::get('/{user}/edit', 'EditController')->name('public.profile.edit');
+            Route::patch('/{user}', 'UpdateController')->name('public.profile.update');
+        });
     });
 });
 Auth::routes(['verify' => true]);
