@@ -89,6 +89,7 @@ class PermissionSeeder extends Seeder
             'comment_delete',
             'comment_access',
             'reader_ban_access',
+            'admin_panel_access',
         ]);
     }
 }
