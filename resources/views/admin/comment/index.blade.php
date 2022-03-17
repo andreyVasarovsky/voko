@@ -37,13 +37,22 @@
                                                 <a href="{{ route('admin.user.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
                                             </td>
                                             <td class="actions" style="font-size: 14px;">
-                                                <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST" class="action">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="border-0 bg-transparent p-0">
-                                                        <i class="fas fa-trash-alt text-danger" role="button"></i>
-                                                    </button>
-                                                </form>
+                                                @if(Auth::user()->can('comment_edit'))
+                                                    <a href="{{ route('admin.comment.edit', $comment->id) }}"
+                                                       class="action">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                @endif
+                                                @if(Auth::user()->can('comment_delete'))
+                                                    <form action="{{ route('admin.comment.destroy', $comment->id) }}"
+                                                          method="POST" class="action">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="border-0 bg-transparent p-0">
+                                                            <i class="fas fa-trash-alt text-danger" role="button"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
