@@ -33,7 +33,7 @@
                 <div class="row mb-3" style="border-bottom: solid 1px #d3d3d3;">
                     <div class="col-2">
                         <strong>{{ $comment->user->name }}</strong><br>
-                        <span style="font-size: 12px;">{{ $comment->created_at }}</span>
+                        <span style="font-size: 12px;">{{ $comment->dateDiff() }}</span>
                     </div>
                     <div class="col-10">
                         {{ $comment->text }}
