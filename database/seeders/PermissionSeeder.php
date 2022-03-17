@@ -84,6 +84,7 @@ class PermissionSeeder extends Seeder
         $readerRole = Role::firstOrCreate(['name' => 'Moderator']);
         $readerRole->syncPermissions([
             'article_show',
+            'article_access',
             'user_access',
             'comment_edit',
             'comment_show',
