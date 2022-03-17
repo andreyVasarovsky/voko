@@ -33,12 +33,12 @@
                                 <table class="table table-hover hover-table-actions close-borders">
                                     <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Имя</th>
+                                        <th scope="col">@sortablelink('id', 'ID')</th>
+                                        <th scope="col">@sortablelink('name', 'Имя')</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Роль</th>
-                                        <th scope="col">Кол-во статей</th>
-                                        <th scope="col">Кол-во комментариев</th>
+                                        <th scope="col">@sortablelink('articles_count', 'Кол-во статей')</th>
+                                        <th scope="col">@sortablelink('comments_count', 'Кол-во комментариев')</th>
                                         <th scope="col">&nbsp;</th>
                                     </tr>
                                     </thead>

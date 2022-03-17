@@ -9,13 +9,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Sortable;
 
     protected $table = 'users';
     protected $guarded = [];
+    public $sortable = ['id', 'name', 'created_at'];
+    public $sortableAs = ['comments_count', 'articles_count'];
 
     public function articles()
     {

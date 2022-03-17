@@ -10,7 +10,7 @@ class IndexController extends BaseController
 {
     public function __invoke()
     {
-        $users = User::all();
+        $users = User::sortable()->withCount('comments')->withCount('articles')->get();
         return view('admin.user.index', compact('users'));
     }
 }
