@@ -3,16 +3,20 @@
 
 namespace App\Http\Controllers\Public\Profile;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Public\Profile\BaseController;
 use App\Http\Requests\Public\Profile\UpdateRequest;
 use App\Models\User;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
     public function __invoke(UpdateRequest $request, User $user)
     {
-        $data = $request->validated();
-        $user->update($data);
-        return redirect()->back()->with('message', 'IT WORKS!');
+        try {
+            $data = $request->validated();
+            $this->service->update($user, $data);
+        }catch (\Exception $exception){
+            return redirect()->back()->with('error', $exception->getMessage());
+        }
+        return redirect()->back()->with('success', 'Обновлено!');
     }
 }

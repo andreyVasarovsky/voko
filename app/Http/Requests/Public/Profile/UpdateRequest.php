@@ -24,7 +24,10 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'name' => 'nullable|string',
+            "old_password" => 'nullable|current_password',
+            "password" =>"confirmed|nullable|different:old_password|required_with:old_password|min:8",
+            "password_confirmation" =>"nullable|required_with:password|required_with:old_password|min:8"
         ];
     }
 }
