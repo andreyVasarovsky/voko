@@ -86,6 +86,7 @@ class PermissionSeeder extends Seeder
             'article_show',
             'article_access',
             'user_access',
+            'user_show',
             'comment_edit',
             'comment_show',
             'comment_delete',

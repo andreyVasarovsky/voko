@@ -10,16 +10,21 @@
                     <div class="row mb-2">
                         <div class="col-sm-6 align-items-center">
                             <h1 class="m-0 d-inline">Просмотр позльзователя</h1>
-                            <a href="{{ route('admin.user.edit', $user->id) }}" class="link-icon">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="border-0 bg-transparent">
-                                    <i class="fas fa-trash-alt link-icon text-danger" role="button"></i>
-                                </button>
-                            </form>
+                            @if(Auth::user()->can('user_edit'))
+                                <a href="{{ route('admin.user.edit', $user->id) }}" class="link-icon">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            @endif
+                            @if(Auth::user()->can('user_delete'))
+                                <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST"
+                                      class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="border-0 bg-transparent">
+                                        <i class="fas fa-trash-alt link-icon text-danger" role="button"></i>
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                         @if($errors->any())
                             <div class="col-12">
