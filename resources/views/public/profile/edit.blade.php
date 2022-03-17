@@ -1,5 +1,5 @@
-@extends('admin.main')
-@extends('admin.nav')
+@extends('layouts.app')
+
 @section('content')
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
@@ -15,11 +15,17 @@
                 </div>
             </div>
 
+            @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
+
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-6">
-                            <form action="{{ route('admin.user.update', $user->id) }}" method="POST">
+                            <form action="{{ route('public.profile.update', $user->id) }}" method="POST">
                                 @method('PATCH')
                                 @csrf
                                 <div class="form-group">
@@ -27,16 +33,6 @@
                                     <input type="text" name="name" class="form-control" id="name"
                                            placeholder="Имя" value="{{ (empty(old('name'))) ? $user->name : old('name') }}">
                                     @error('name')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email"
-                                           placeholder="Email" value="{{ (empty(old('email'))) ? $user->email : old('email') }}">
-                                    @error('email')
                                     <div class="text-danger">
                                         {{$message}}
                                     </div>
