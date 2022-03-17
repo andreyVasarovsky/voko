@@ -60,19 +60,26 @@
                                             <td>{{ $user->articles->count() }}</td>
                                             <td>{{ $user->comments->count() }}</td>
                                             <td class="actions" style="font-size: 14px;">
-                                                <a href="{{ route('admin.user.show', $user->id) }}" class="action">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <a href="{{ route('admin.user.edit', $user->id) }}" class="action">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST" class="action">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="border-0 bg-transparent p-0">
-                                                        <i class="fas fa-trash-alt text-danger" role="button"></i>
-                                                    </button>
-                                                </form>
+                                                @if(Auth::user()->can('user_show'))
+                                                    <a href="{{ route('admin.user.show', $user->id) }}" class="action">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                @endif
+                                                @if(Auth::user()->can('user_edit'))
+                                                    <a href="{{ route('admin.user.edit', $user->id) }}" class="action">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                @endif
+                                                @if(Auth::user()->can('user_delete'))
+                                                    <form action="{{ route('admin.user.destroy', $user->id) }}"
+                                                          method="POST" class="action">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="border-0 bg-transparent p-0">
+                                                            <i class="fas fa-trash-alt text-danger" role="button"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
