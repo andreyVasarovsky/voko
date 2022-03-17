@@ -34,8 +34,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
         Route::delete('/{category}', 'DestroyController')->name('admin.category.destroy')->middleware('can:category_delete');
     });
     Route::group(['namespace' => 'User', 'prefix' => 'users', 'middleware' => ['can:user_access']], function () {
-        Route::get('/', 'IndexController')->name('admin.user.index')->middleware('can:user_access');;
-        Route::get('/create', 'CreateController')->name('admin.user.create')->middleware('can:user_create');;
+        Route::get('/', 'IndexController')->name('admin.user.index')->middleware('can:user_access');
+        Route::post('/', 'IndexController')->name('admin.client.index')->middleware('can:user_access');
+        Route::get('/create', 'CreateController')->name('admin.user.create')->middleware('can:user_create');
         Route::get('/{user}', 'ShowController')->name('admin.user.show')->middleware('can:user_show');
         Route::get('/{user}/edit', 'EditController')->name('admin.user.edit')->middleware('can:user_edit');
         Route::post('/store', 'StoreController')->name('admin.user.store')->middleware('can:user_create');

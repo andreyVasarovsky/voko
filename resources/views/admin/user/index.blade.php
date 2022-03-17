@@ -25,6 +25,7 @@
                     </div>
                 </div>
             </div>
+            @include('admin.user.filter')
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
