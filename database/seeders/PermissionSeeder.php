@@ -48,6 +48,7 @@ class PermissionSeeder extends Seeder
             'comment_show',
             'comment_delete',
             'comment_access',
+            'reader_ban_access',
         ];
 
         foreach ($permissions AS $permission){
@@ -78,6 +79,16 @@ class PermissionSeeder extends Seeder
             'article_show',
             'article_access',
             'admin_panel_access',
+        ]);
+        //Moderator permissions
+        $readerRole = Role::firstOrCreate(['name' => 'Moderator']);
+        $readerRole->syncPermissions([
+            'article_show',
+            'comment_edit',
+            'comment_show',
+            'comment_delete',
+            'comment_access',
+            'reader_ban_access',
         ]);
     }
 }

@@ -21,4 +21,7 @@
 <br>
 <p><strong>Login:</strong> Editor@Editor.Editor</p>
 <p><strong>Password:</strong> Editor</p>
+<br>
+<p><strong>Login:</strong> Moderator@Moderator.Moderator</p>
+<p><strong>Password:</strong> Moderator</p>
 

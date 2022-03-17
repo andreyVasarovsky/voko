@@ -65,5 +65,14 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         $editor->assignRole('Editor');
+
+        $editor = User::firstOrCreate(['name' => 'Moderator'], [
+            'name' => 'Moderator',
+            'email' => 'Moderator@Moderator.Moderator',
+            'email_verified_at' => now(),
+            'password' => Hash::make('Moderator'),
+            'remember_token' => Str::random(10),
+        ]);
+        $editor->assignRole('Moderator');
     }
 }
