@@ -26,6 +26,15 @@ class StoreRequest extends FormRequest
         return [
             'text' => 'required',
             'article_id' => 'required|exists:articles,id',
+            'g-recaptcha-response' => ['required', 'recaptcha']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'g-recaptcha-response.recaptcha' => 'Captcha verification failed',
+            'g-recaptcha-response.required' => 'Please complete the captcha'
         ];
     }
 }

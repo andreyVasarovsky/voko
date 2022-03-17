@@ -65,6 +65,18 @@
                             </div>
                             @enderror
                         </div>
+                        @if(config('services.recaptcha.key'))
+                            <div class="row mb-2">
+                                <div class="g-recaptcha"
+                                     data-sitekey="{{config('services.recaptcha.key')}}">
+                                </div>
+                                @error('g-recaptcha-response')
+                                <div class="col-md-6">
+                                    <strong class="text-danger">{{ $message }}</strong>
+                                </div>
+                                @enderror
+                            </div>
+                        @endif
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Добавить комментарий</button>
                         </div>
