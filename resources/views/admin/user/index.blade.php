@@ -46,7 +46,7 @@
                                     @foreach($users AS $user)
                                         <tr>
                                             <th scope="row">{{ $user->id }}</th>
-                                            <td>{{ $user->name }}</td>
+                                            <td class="{{ ($user->banned ? 'text-danger' : 'text-success') }}">{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             @if($user->roles->count() > 0)
                                                 <td>
@@ -79,6 +79,29 @@
                                                             <i class="fas fa-trash-alt text-danger" role="button"></i>
                                                         </button>
                                                     </form>
+                                                @endif
+                                                @if(Auth::user()->can('reader_ban_access'))
+                                                    @if($user->banned)
+                                                        <form action="{{ route('admin.user.ban.remove', $user->id) }}"
+                                                              method="POST" class="action">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" class="border-0 bg-transparent p-0">
+                                                                <i class="fas fa-lock-open text-success"
+                                                                   role="button"></i>
+                                                            </button>
+                                                        </form>
+                                                    @else
+                                                        <form action="{{ route('admin.user.ban.add', $user->id) }}"
+                                                              method="POST" class="action">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" class="border-0 bg-transparent p-0">
+                                                                <i class="fas fa-lock text-danger"
+                                                                   role="button"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
                                                 @endif
                                             </td>
                                         </tr>

@@ -50,39 +50,49 @@
                 </div>
             </div>
         @else
-            <div class="row">
-                <div class="col-12">
-                    <form action="{{ route('public.comment.store') }}" method="POST">
-                        @csrf
-                        <input type="text" name="article_id" value="{{$article->id}}" class="d-none">
-                        <div class="form-group mb-2">
-                            <label for="region">Комментарий</label>
-                            <textarea name="text" class="form-control" id="text"
-                                      placeholder="Комментарий">{{ (empty(old('text'))) ? '' : old('text') }}</textarea>
-                            @error('text')
-                            <div class="text-danger">
-                                {{$message}}
-                            </div>
-                            @enderror
+            @if(Auth::user()->banned)
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger" role="alert">
+                            Вы заблокированы и не можете добавлять комментарии!
                         </div>
-                        @if(config('services.recaptcha.key'))
-                            <div class="row mb-2">
-                                <div class="g-recaptcha"
-                                     data-sitekey="{{config('services.recaptcha.key')}}">
-                                </div>
-                                @error('g-recaptcha-response')
-                                <div class="col-md-6">
-                                    <strong class="text-danger">{{ $message }}</strong>
+                    </div>
+                </div>
+            @else
+                <div class="row">
+                    <div class="col-12">
+                        <form action="{{ route('public.comment.store') }}" method="POST">
+                            @csrf
+                            <input type="text" name="article_id" value="{{$article->id}}" class="d-none">
+                            <div class="form-group mb-2">
+                                <label for="region">Комментарий</label>
+                                <textarea name="text" class="form-control" id="text"
+                                          placeholder="Комментарий">{{ (empty(old('text'))) ? '' : old('text') }}</textarea>
+                                @error('text')
+                                <div class="text-danger">
+                                    {{$message}}
                                 </div>
                                 @enderror
                             </div>
-                        @endif
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Добавить комментарий</button>
-                        </div>
-                    </form>
+                            @if(config('services.recaptcha.key'))
+                                <div class="row mb-2">
+                                    <div class="g-recaptcha"
+                                         data-sitekey="{{config('services.recaptcha.key')}}">
+                                    </div>
+                                    @error('g-recaptcha-response')
+                                    <div class="col-md-6">
+                                        <strong class="text-danger">{{ $message }}</strong>
+                                    </div>
+                                    @enderror
+                                </div>
+                            @endif
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Добавить комментарий</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            @endif
         @endguest
     </div>
 @endsection

@@ -40,6 +40,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
         Route::get('/{user}/edit', 'EditController')->name('admin.user.edit')->middleware('can:user_edit');
         Route::post('/store', 'StoreController')->name('admin.user.store')->middleware('can:user_create');
         Route::patch('/{user}', 'UpdateController')->name('admin.user.update')->middleware('can:user_edit');
+
+        Route::group(['namespace' => 'Ban', 'prefix' => 'ban', 'middleware' => ['can:reader_ban_access']], function() {
+            Route::patch('/{user}/add', 'AddController')->name('admin.user.ban.add')->middleware('can:reader_ban_access');
+            Route::patch('/{user}/remove', 'RemoveController')->name('admin.user.ban.remove')->middleware('can:reader_ban_access');
+        });
+
         Route::delete('/{user}', 'DestroyController')->name('admin.user.destroy')->middleware('can:user_delete');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comments', 'middleware' => ['can:comment_access']], function () {

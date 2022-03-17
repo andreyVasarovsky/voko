@@ -25,6 +25,29 @@
                                     </button>
                                 </form>
                             @endif
+                            @if(Auth::user()->can('reader_ban_access'))
+                                @if($user->banned)
+                                    <form action="{{ route('admin.user.ban.remove', $user->id) }}"
+                                          method="POST" class="d-inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="border-0 bg-transparent p-0">
+                                            <i class="fas fa-lock-open text-success link-icon"
+                                               role="button"></i>
+                                        </button>
+                                    </form>
+                                @else
+                                    <form action="{{ route('admin.user.ban.add', $user->id) }}"
+                                          method="POST" class="d-inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="border-0 bg-transparent p-0">
+                                            <i class="fas fa-lock text-danger link-icon"
+                                               role="button"></i>
+                                        </button>
+                                    </form>
+                                @endif
+                            @endif
                         </div>
                         @if($errors->any())
                             <div class="col-12">
@@ -47,6 +70,7 @@
                                     <th scope="col">Имя</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Роль</th>
+                                    <th scope="col">Заблокирован</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -63,6 +87,13 @@
                                     @else
                                         <td>-</td>
                                     @endif
+                                    <td>
+                                        @if($user->banned)
+                                            Да
+                                        @else
+                                            Нет
+                                        @endif
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
