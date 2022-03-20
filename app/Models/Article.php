@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Article extends Model
 {
@@ -25,6 +26,18 @@ class Article extends Model
     public function likes()
     {
         return $this->hasMany(Like::class, 'article_id', 'id');
+    }
+
+    public function isLikedByCurrentUser(): bool
+    {
+        if (!Auth::user())
+            return false;
+        return !empty($this->getCurrentUserLike());
+    }
+
+    public function getCurrentUserLike()
+    {
+        return $this->likes->where('user_id', Auth::user()->id)->where('article_id', $this->id)->first();
     }
 
     public function tags()

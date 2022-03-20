@@ -67,11 +67,17 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
         Route::get('/store', function () { abort(404); });
         Route::post('/store', 'StoreController')->name('public.comment.store');
     });
+    Route::group(['namespace' => 'Like', 'prefix' => 'like', 'middleware' => ['auth']], function () {
+        Route::get('/store', function () { abort(404); });
+        Route::post('/store', 'StoreController')->name('public.like.store');
+        Route::delete('/{like}', 'DestroyController')->name('public.like.destroy');
+    });
     Route::middleware('is_editable_profile_self')->group(function () {
         Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
             Route::get('/{user}/edit', 'EditController')->name('public.profile.edit');
             Route::patch('/{user}', 'UpdateController')->name('public.profile.update');
         });
     });
+
 });
 Auth::routes(['verify' => true]);
