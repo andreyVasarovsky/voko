@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-    <div class="container">
+    <div class="container mb-2">
         <div class="row">
             <div class="col-12 mb-2">
                 <h1 class="mb-2">Мой профиль</h1>
@@ -73,4 +71,5 @@
             </div>
         </div>
     </div>
+    @include('public.article.liked')
 @endsection

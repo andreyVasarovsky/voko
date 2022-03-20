@@ -11296,6 +11296,7 @@ body .link-icon + .link-icon {
 body table.close-borders {
   border-right: solid 1px #dee2e6;
   border-left: solid 1px #dee2e6;
+  border-top: solid 1px #dee2e6;
 }
 body .hover-table-actions tbody tr .actions {
   width: 120px;
