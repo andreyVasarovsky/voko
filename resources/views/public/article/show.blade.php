@@ -20,6 +20,36 @@
                         &nbsp;
                     @endif
                 </div>
+                <div class="likes mt-2">
+                    {{ $article->likes->count() }}
+                    @guest
+                        <i class="far fa-heart"></i>
+                    @else
+                        @if($article->isLikedByCurrentUser())
+                            <form action="{{ route('public.like.destroy', $article->getCurrentUserLike()->id) }}"
+                                  class="d-inline"
+                                  method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="article_id" value="{{ $article->id }}">
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fas fa-heart text-danger" role="button"></i>
+                                </button>
+                            </form>
+                        @else
+                            <form action="{{ route('public.like.store') }}" class="d-inline"
+                                  method="POST">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="article_id" value="{{ $article->id }}">
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="far fa-heart" role="button"></i>
+                                </button>
+                            </form>
+                        @endif
+                    @endguest
+                </div>
             </div>
             <div class="col-12 col-md-8 text-center">
                 {!! $article->content !!}
