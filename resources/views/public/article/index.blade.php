@@ -11,7 +11,13 @@
                                   style="position: absolute; font-size: 16px; background-color: black; right: 4px; top: 4px;">{{ $article->category->title }}</span>
                             <img class="card-img-top" src="{{ asset($article->preview) }}" alt="Image" style="min-height: 100px">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $article->title }}</h5>
+                                <h5 class="card-title">
+                                    <span class="title">{{ $article->title }}</span>
+                                    <span class="likes float-right" style="float: right;">
+                                        {{ $article->likes->count() }}
+                                        <i class="far fa-heart"></i>
+                                    </span>
+                                </h5>
                                 <p class="card-text">{{ $article->desc }}</p>
                                 <div class="tags">
                                     @if($article->tags->count() > 0)
