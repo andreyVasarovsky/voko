@@ -9,7 +9,7 @@
                 <h5 class="card-title">
                     <span class="title">{{ $article->title }}</span>
                     <span class="likes float-right" style="float: right;">
-                                        {{ $article->likes->count() }}
+                            {{ $article->likes_count }}
                         @guest
                             <i class="far fa-heart"></i>
                         @else

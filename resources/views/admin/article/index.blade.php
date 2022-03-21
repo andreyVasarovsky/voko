@@ -38,7 +38,7 @@
                                         </div>
                                         <div class="desc text-center">
                                             {{ $article->desc }}<br>
-                                            <span>({{ $article->comments->count() }} комментариев, {{ $article->likes->count() }} <i
+                                            <span>({{ $article->comments->count() }} комментариев, {{ $article->likes_count }} <i
                                                     class="fas fa-heart text-danger"></i>)</span>
                                         </div>
                                         <div class="action-list text-center mt-2">

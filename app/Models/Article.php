@@ -12,6 +12,7 @@ class Article extends Model
 
     protected $table = 'articles';
     protected $guarded = [];
+    protected $withCount = ['likes'];
 
     public function comments()
     {

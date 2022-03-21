@@ -21,7 +21,7 @@
                     @endif
                 </div>
                 <div class="likes mt-2">
-                    {{ $article->likes->count() }}
+                    {{ $article->likes_count }}
                     @guest
                         <i class="far fa-heart"></i>
                     @else

@@ -10,7 +10,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-6 align-items-center">
                             <h1 class="m-0 d-inline">Статья: {{ $article->title }} ({{ $article->comments->count() }}
-                                комментариев, {{ $article->likes->count() }} <i class="fas fa-heart text-danger"></i>)
+                                комментариев, {{ $article->likes_count }} <i class="fas fa-heart text-danger"></i>)
                             </h1>
                         </div>
                         @if(session('error'))
