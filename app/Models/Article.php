@@ -14,6 +14,63 @@ class Article extends Model
     protected $guarded = [];
     protected $withCount = ['likes'];
 
+    const RELATED_POSTS_QTY = 3;
+
+    public function isLikedByCurrentUser(): bool
+    {
+        if (!Auth::user())
+            return false;
+        return !empty($this->getCurrentUserLike());
+    }
+
+    public function getCurrentUserLike()
+    {
+        return $this->likes->where('user_id', Auth::user()->id)->where('article_id', $this->id)->first();
+    }
+
+    public function getRelatedArticles()
+    {
+        $relatedArticles = [];
+
+        $foundArticles = [];
+        $foundArticlesIds = [];
+        foreach ($this->tags as $tag) {
+            $tagArticles = $tag->articles;
+            if (!empty($tagArticles)) {
+                //Calculate same tags qty
+                foreach ($tagArticles as $article) {
+                    $foundArticles[$article->id] = $article;
+                    $foundArticlesIds[] = $article->id;
+                }
+
+                $calculatedArticleKeys = array_count_values($foundArticlesIds);
+                arsort($calculatedArticleKeys);
+                //Found most similar articles by post
+                foreach ($calculatedArticleKeys as $articleId => $qty) {
+                    if (intval($articleId) === intval($this->id))
+                        continue;
+                    if (count($relatedArticles) < self::RELATED_POSTS_QTY) {
+                        $relatedArticles[$articleId] = $foundArticles[$articleId];
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+        //If is not enough relatedArticles => get random ones;
+        if (count($relatedArticles) < self::RELATED_POSTS_QTY) {
+            $qtyToAppend = self::RELATED_POSTS_QTY - count($relatedArticles);
+            $randomArticles = Article::inRandomOrder()->whereNotIn('id', array_keys($relatedArticles))->limit($qtyToAppend)->get();
+            if (!empty($randomArticles)){
+                foreach ($randomArticles AS $article){
+                    $relatedArticles[] = $article;
+                }
+            }
+        }
+
+        return $relatedArticles;
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class, 'article_id', 'id');
@@ -27,18 +84,6 @@ class Article extends Model
     public function likes()
     {
         return $this->hasMany(Like::class, 'article_id', 'id');
-    }
-
-    public function isLikedByCurrentUser(): bool
-    {
-        if (!Auth::user())
-            return false;
-        return !empty($this->getCurrentUserLike());
-    }
-
-    public function getCurrentUserLike()
-    {
-        return $this->likes->where('user_id', Auth::user()->id)->where('article_id', $this->id)->first();
     }
 
     public function tags()

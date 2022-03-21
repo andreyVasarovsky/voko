@@ -10,6 +10,7 @@ class ShowController extends Controller
 {
     public function __invoke(Article $article)
     {
-        return view('public.article.show', compact('article'));
+        $related = $article->getRelatedArticles();
+        return view('public.article.show', compact('article', 'related'));
     }
 }

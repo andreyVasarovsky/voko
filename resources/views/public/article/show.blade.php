@@ -55,8 +55,21 @@
                 {!! $article->content !!}
             </div>
         </div>
-        <div class="col-12">
-            <hr>
+        <div class="row">
+            <div class="col-12">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <strong>Похожие статьи:</strong>
+            </div>
+            @include('public.article.related')
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr>
+            </div>
         </div>
         @if($article->comments->count() > 0)
             @foreach($article->comments AS $comment)
