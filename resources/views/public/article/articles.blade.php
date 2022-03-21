@@ -38,6 +38,9 @@
                             @endif
                         @endguest
                                     </span>
+                    <span class="views float-right" style="float: right">
+                        {{ $article->view_qty }} <i class="fas fa-eye"></i> &nbsp;
+                    </span>
                 </h5>
                 <p class="card-text">{{ $article->desc }}</p>
                 <div class="tags">

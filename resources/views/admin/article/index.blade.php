@@ -38,8 +38,11 @@
                                         </div>
                                         <div class="desc text-center">
                                             {{ $article->desc }}<br>
-                                            <span>({{ $article->comments->count() }} комментариев, {{ $article->likes_count }} <i
-                                                    class="fas fa-heart text-danger"></i>)</span>
+                                            <span>
+                                                ({{ $article->comments->count() }} комментариев,
+                                                {{ $article->likes_count }} <i class="fas fa-heart text-danger"></i>,
+                                                {{ $article->view_qty }} <i class="fas fa-eye"></i>)
+                                            </span>
                                         </div>
                                         <div class="action-list text-center mt-2">
                                             @if(Auth::user()->can('article_show'))
