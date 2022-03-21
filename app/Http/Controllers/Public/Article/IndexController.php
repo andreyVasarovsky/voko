@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $articles = Article::all();
+        $articles = Article::sortable()->get();
         return view('public.article.index', compact('articles'));
     }
 }

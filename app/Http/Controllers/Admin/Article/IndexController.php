@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $articles = Article::all();
+        $articles = Article::sortable()->get();
         return view('admin.article.index', compact('articles'));
     }
 }

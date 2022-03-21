@@ -2,14 +2,19 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            @if($articles->count() > 0)
+        @if($articles->count() > 0)
+            @include('public.article.sort')
+            <div class="row">
                 @include('public.article.articles')
-            @else
-                <div class="alert alert-dark" role="alert">
-                    Статей пока нет, возвращайтесь позже!
+            </div>
+        @else
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-dark" role="alert">
+                        Статей пока нет, возвращайтесь позже!
+                    </div>
                 </div>
-            @endif
-        </div>
+            </div>
+        @endif
     </div>
 @endsection

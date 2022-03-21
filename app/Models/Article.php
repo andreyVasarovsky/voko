@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Kyslik\ColumnSortable\Sortable;
 
 class Article extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     protected $table = 'articles';
     protected $guarded = [];
-    protected $withCount = ['likes'];
+    protected $withCount = ['likes', 'comments'];
+    public $sortableAs = ['likes_count', 'comments_count'];
 
     const RELATED_POSTS_QTY = 3;
 

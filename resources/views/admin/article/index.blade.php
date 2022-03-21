@@ -19,6 +19,7 @@
                         @endif
                     </div>
                 </div>
+                @include('public.article.sort')
             </div>
             <section class="content">
                 <div class="container-fluid">
@@ -39,7 +40,7 @@
                                         <div class="desc text-center">
                                             {{ $article->desc }}<br>
                                             <span>
-                                                ({{ $article->comments->count() }} комментариев,
+                                                ({{ $article->comments->count() }} <i class="fas fa-comments"></i>,
                                                 {{ $article->likes_count }} <i class="fas fa-heart text-danger"></i>,
                                                 {{ $article->view_qty }} <i class="fas fa-eye"></i>)
                                             </span>

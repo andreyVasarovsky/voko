@@ -11324,7 +11324,7 @@ body .article-admin-card {
   position: relative;
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.25), 0 0px 4px rgba(0, 0, 0, 0.22);
   display: block;
-  height: 425px;
+  height: 445px;
   padding: 8px;
   text-decoration: none;
   color: #757575;
@@ -11348,7 +11348,7 @@ body .article-admin-card .category {
   font-size: 16px;
 }
 body .article-admin-card .desc {
-  height: 50px;
+  height: 70px;
   overflow: hidden;
 }
 body .article-admin-card .size, body .article-admin-card .open {
