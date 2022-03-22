@@ -74,6 +74,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
     });
     Route::middleware('is_editable_profile_self')->group(function () {
         Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
+            Route::get('/{user}', 'IndexController')->name('public.profile.index');
             Route::get('/{user}/edit', 'EditController')->name('public.profile.edit');
             Route::patch('/{user}', 'UpdateController')->name('public.profile.update');
         });

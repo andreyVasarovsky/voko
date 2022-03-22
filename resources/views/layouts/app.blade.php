@@ -66,7 +66,7 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a href="{{ route('public.profile.edit', Auth::user()->id) }}" class="nav-link">{{ Auth::user()->name }}</a>
+                            <a href="{{ route('public.profile.index', Auth::user()->id) }}" class="nav-link">{{ Auth::user()->name }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"

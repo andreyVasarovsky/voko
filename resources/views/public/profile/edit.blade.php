@@ -71,5 +71,4 @@
             </div>
         </div>
     </div>
-    @include('public.article.liked')
 @endsection
