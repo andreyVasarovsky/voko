@@ -19,6 +19,7 @@ class Service
         $tagIds = isset($data['tag_ids']) ? $data['tag_ids'] : [];
         unset($data['tag_ids']);
         $data['user_id'] = Auth::user()->id;
+        $data['is_from_reader'] = Auth::user()->isReader();
         $article = Article::firstOrCreate($data);
         $article->tags()->attach($tagIds);
         $filename = $article->id . '.' . $preview->extension();

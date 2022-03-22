@@ -1,6 +1,6 @@
 @foreach($related AS $article)
     <div class="col-12 col-md-3 mb-2">
-        <div class="card">
+        <div class="card article-card">
                             <span class="badge badge-secondary"
                                   style="position: absolute; font-size: 16px; background-color: black; right: 4px; top: 4px;">{{ $article->category->title }}</span>
             <img class="card-img-top" src="{{ asset($article->preview) }}" alt="Image"

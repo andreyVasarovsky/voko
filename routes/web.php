@@ -61,6 +61,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
     Route::get('', 'IndexController')->name('public.index');
     Route::group(['namespace' => 'Article', 'prefix' => 'articles'], function () {
         Route::get('/', 'IndexController')->name('public.article.index');
+        Route::get('/create', 'CreateController')->name('public.article.create')->middleware('can:reader_article_create');
+        Route::post('/store', 'StoreController')->name('public.article.store')->middleware('can:reader_article_create');
+
         Route::get('/{article}', 'ShowController')->name('public.article.show');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
@@ -79,6 +82,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
             Route::patch('/{user}', 'UpdateController')->name('public.profile.update');
         });
     });
-
 });
 Auth::routes(['verify' => true]);
+

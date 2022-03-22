@@ -21,6 +21,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public $sortable = ['id', 'name', 'created_at'];
     public $sortableAs = ['comments_count', 'articles_count'];
 
+    public function isReader(): bool
+    {
+        return $this->hasRole('Reader');
+    }
+
     public function articles()
     {
         return $this->hasMany(Article::class, 'user_id', 'id');

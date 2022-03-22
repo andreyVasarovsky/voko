@@ -66,6 +66,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Обновить</button>
+                        <a href="{{ route('public.profile.index', Auth::user()->id) }}" class="btn btn-danger">Отмена</a>
                     </div>
                 </form>
             </div>

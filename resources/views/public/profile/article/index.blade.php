@@ -1,7 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h2>Мои статьи</h2>
+            <h2>
+                Мои статьи
+                <a href="{{ route('public.article.create') }}" class="action">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </h2>
         </div>
         <div class="col-12">
             @if(Auth::user()->articles->count())
