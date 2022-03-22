@@ -19,7 +19,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="{{ asset('https://fonts.gstatic.com') }}">
     <link href="{{ asset('https://fonts.googleapis.com/css?family=Nunito') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css') }}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
@@ -44,7 +45,12 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto" style="font-size: 16px;">
                     <li>
-                        <a class="nav-link" href="{{ route('public.article.index') }}">Читать статьи</a>
+                        <a class="nav-link {{ (request()->segment(1) == 'articles') ? 'active' : '' }}"
+                           href="{{ route('public.article.index') }}">Статьи от авторов</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ (request()->segment(1) == 'reader_articles') ? 'active' : '' }}"
+                           href="{{ route('public.reader_article.index') }}">Статьи от читателей</a>
                     </li>
                     @auth
                         @if (Auth::user()->can('admin_panel_access'))
@@ -71,7 +77,8 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a href="{{ route('public.profile.index', Auth::user()->id) }}" class="nav-link">{{ Auth::user()->name }}</a>
+                            <a href="{{ route('public.profile.index', Auth::user()->id) }}"
+                               class="nav-link">{{ Auth::user()->name }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
