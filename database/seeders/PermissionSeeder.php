@@ -49,6 +49,7 @@ class PermissionSeeder extends Seeder
             'comment_delete',
             'comment_access',
             'reader_ban_access',
+            'reader_article_create',
         ];
 
         foreach ($permissions AS $permission){
@@ -63,6 +64,7 @@ class PermissionSeeder extends Seeder
         $readerRole->syncPermissions([
             'article_show',
             'article_access',
+            'reader_article_create',
         ]);
         //Writer permissions
         $writerRole = Role::firstOrCreate(['name' => 'Writer']);
