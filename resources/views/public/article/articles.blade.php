@@ -1,8 +1,12 @@
 @foreach($articles AS $article)
     <div class="col-12 col-md-3 mb-2">
         <div class="card article-card">
-                            <span class="badge badge-secondary"
-                                  style="position: absolute; font-size: 16px; background-color: black; right: 4px; top: 4px;">{{ $article->category->title }}</span>
+            <div class="badge-list" style="position: absolute; font-size: 16px; right: 4px; top: 4px;">
+                <span class="badge badge-secondary" style="background-color: black;">{{ $article->category->title }}</span>
+                @if($article->is_from_reader)
+                    <span class="badge badge-info" style="background-color: red;">От читателя!</span>
+                @endif
+            </div>
             <img class="card-img-top" src="{{ asset($article->preview) }}" alt="Image"
                  style="min-height: 100px">
             <div class="card-body">

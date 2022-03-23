@@ -27,7 +27,11 @@
                     <div class="row">
                         <div class="col-4">
                             <h3 class="category" style="position: absolute; top: 4px; right: 18px;"><span
-                                    class="badge badge-secondary">{{ $article->category->title }}</span></h3>
+                                    class="badge badge-secondary">{{ $article->category->title }}</span>
+                                @if($article->is_from_reader)
+                                    <span class="badge badge-info">От читателя!</span>
+                                @endif
+                            </h3>
                             <img class="w-100" src="{{ asset($article->preview) }}" alt="Картинка">
                             <div class="desc text-center mt-2">
                                 {{ $article->desc }}

@@ -7,8 +7,12 @@
                 <h1 class="text-center">{{ $article->title }}</h1>
             </div>
             <div class="col-12 col-md-4" style="position: relative;">
-                <span class="badge badge-secondary"
-                      style="position: absolute; font-size: 16px; background-color: black; margin: 4px;">{{ $article->category->title }}</span>
+                <div class="badge-list" style="position: absolute; font-size: 16px; margin: 4px;">
+                    <span class="badge badge-secondary" style="background-color: black;">{{ $article->category->title }}</span>
+                    @if($article->is_from_reader)
+                        <span class="badge badge-info" style="background-color: red;">От читателя!</span>
+                    @endif
+                </div>
                 <img src="{{ asset($article->preview) }}" class="img-fluid rounded w-100" alt="Preview">
                 <div class="tags mt-2">
                     @if($article->tags->count() > 0)

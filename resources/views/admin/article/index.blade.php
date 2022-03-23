@@ -36,6 +36,9 @@
                                         </div>
                                         <div class="category">
                                             <span class="badge badge-dark">{{ $article->category->title }}</span>
+                                            @if($article->is_from_reader)
+                                                <span class="badge badge-info">От читателя!</span>
+                                            @endif
                                         </div>
                                         <div class="desc text-center">
                                             {{ $article->desc }}<br>
