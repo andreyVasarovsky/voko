@@ -34,7 +34,7 @@
                                    class="action">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="{{ route('admin.article.edit', $article->id) }}"
+                                <a href="{{ route('public.article.edit', $article->id) }}"
                                    class="action">
                                     <i class="fas fa-edit"></i>
                                 </a>

@@ -65,6 +65,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
         Route::get('/create', 'CreateController')->name('public.article.create')->middleware('can:reader_article_create');
         Route::post('/store', 'StoreController')->name('public.article.store')->middleware('can:reader_article_create');
         Route::get('/{article}', 'ShowController')->name('public.article.show');
+        Route::get('/{article}/edit', 'EditController')->name('public.article.edit')->middleware('article.author');
+        Route::patch('/{article}', 'UpdateController')->name('public.article.update')->middleware('article.author');
         Route::delete('/{article}', 'DestroyController')->name('public.article.destroy')->middleware('article.author');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
