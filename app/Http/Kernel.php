@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'is_editable_profile_self' => Middleware\IsEditableProfileSelf::class,
         'article.author' => Middleware\ArticleAuthor::class,
+        'view.other.person.articles' => Middleware\ViewOtherPersonArticles::class,
     ];
 }

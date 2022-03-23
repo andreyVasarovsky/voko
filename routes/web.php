@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Public\Comment\StoreController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -69,6 +68,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
         Route::patch('/{article}', 'UpdateController')->name('public.article.update')->middleware('article.author');
         Route::delete('/{article}', 'DestroyController')->name('public.article.destroy')->middleware('article.author');
     });
+    Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
+        Route::get('/{user}', 'ShowController')->name('public.user.show')->middleware('view.other.person.articles');
+    });
+
     Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
         Route::get('/store', function () { abort(404); });
         Route::post('/store', 'StoreController')->name('public.comment.store');

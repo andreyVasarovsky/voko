@@ -58,6 +58,10 @@
                     <div class="views d-inline">
                         {{ $article->view_qty }} <i class="fas fa-eye"></i> &nbsp;
                     </div>
+                    <div class="author">
+                        Автор:
+                        <a href="{{ route('public.user.show', $article->user->id) }}">{{ $article->user->name }}</a>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-md-8 text-center">
@@ -81,17 +85,7 @@
             </div>
         </div>
         @if($article->comments->count() > 0)
-            @foreach($article->comments AS $comment)
-                <div class="row mb-3" style="border-bottom: solid 1px #d3d3d3;">
-                    <div class="col-2">
-                        <strong>{{ $comment->user->name }}</strong><br>
-                        <span style="font-size: 12px;">{{ $comment->dateDiff() }}</span>
-                    </div>
-                    <div class="col-10">
-                        {{ $comment->text }}
-                    </div>
-                </div>
-            @endforeach
+            @include('public.article.comments')
         @endif
         @guest
             <div class="row">

@@ -63,8 +63,8 @@ class Article extends Model
         if (count($relatedArticles) < self::RELATED_POSTS_QTY) {
             $qtyToAppend = self::RELATED_POSTS_QTY - count($relatedArticles);
             $randomArticles = Article::inRandomOrder()->whereNotIn('id', array_keys($relatedArticles))->limit($qtyToAppend)->get();
-            if (!empty($randomArticles)){
-                foreach ($randomArticles AS $article){
+            if (!empty($randomArticles)) {
+                foreach ($randomArticles as $article) {
                     $relatedArticles[] = $article;
                 }
             }
@@ -91,5 +91,10 @@ class Article extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'article_tags', 'article_id', 'tag_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
