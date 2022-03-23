@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $articles = Article::sortable()->get();
+        $articles = Article::sortable()->where('is_from_reader', false)->get();
         return view('public.article.index', compact('articles'));
     }
 }
