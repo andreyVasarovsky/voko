@@ -26,6 +26,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasRole('Reader');
     }
 
+    public function subscribers()
+    {
+        return $this->hasMany(Subscription::class, 'subscribe_user_id', 'id');
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class, 'user_id', 'id');
+    }
+
     public function articles()
     {
         return $this->hasMany(Article::class, 'user_id', 'id');
