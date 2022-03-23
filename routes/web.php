@@ -60,15 +60,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
 Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], function () {
     Route::get('', 'IndexController')->name('public.index');
     Route::group(['namespace' => 'Article', 'prefix' => 'articles'], function () {
-        Route::get('/', 'IndexController')->name('public.article.index');
+        Route::get('/writers', 'WriterIndexController')->name('public.writer.article.index');
+        Route::get('/readers', 'ReaderIndexController')->name('public.reader.article.index');
         Route::get('/create', 'CreateController')->name('public.article.create')->middleware('can:reader_article_create');
         Route::post('/store', 'StoreController')->name('public.article.store')->middleware('can:reader_article_create');
         Route::get('/{article}', 'ShowController')->name('public.article.show');
-    });
-    Route::group(['namespace' => 'ReaderArticle', 'prefix' => 'reader_articles'], function () {
-        Route::get('/', function (){
-
-        })->name('public.reader_article.index');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
         Route::get('/store', function () { abort(404); });

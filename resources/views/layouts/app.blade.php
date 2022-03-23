@@ -45,12 +45,12 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto" style="font-size: 16px;">
                     <li>
-                        <a class="nav-link {{ (request()->segment(1) == 'articles') ? 'active' : '' }}"
-                           href="{{ route('public.article.index') }}">Статьи от авторов</a>
+                        <a class="nav-link {{ (request()->segment(2) == 'writers') ? 'active' : '' }}"
+                           href="{{ route('public.writer.article.index') }}">Статьи от авторов</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ (request()->segment(1) == 'reader_articles') ? 'active' : '' }}"
-                           href="{{ route('public.reader_article.index') }}">Статьи от читателей</a>
+                        <a class="nav-link {{ (request()->segment(2) == 'readers') ? 'active' : '' }}"
+                           href="{{ route('public.reader.article.index') }}">Статьи от читателей</a>
                     </li>
                     @auth
                         @if (Auth::user()->can('admin_panel_access'))
