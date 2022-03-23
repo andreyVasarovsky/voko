@@ -59,6 +59,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
 Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], function () {
     Route::get('', 'IndexController')->name('public.index');
     Route::group(['namespace' => 'Article', 'prefix' => 'articles'], function () {
+        Route::get('/subscriptions', 'SubscriptionsIndexController')->name('public.subscriptions.article.index')->middleware('auth');
         Route::get('/writers', 'WriterIndexController')->name('public.writer.article.index');
         Route::get('/readers', 'ReaderIndexController')->name('public.reader.article.index');
         Route::get('/create', 'CreateController')->name('public.article.create')->middleware('can:reader_article_create');

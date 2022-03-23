@@ -3,6 +3,7 @@
         <div class="card article-card">
             <div class="badge-list" style="position: absolute; font-size: 16px; right: 4px; top: 4px;">
                 <span class="badge badge-secondary" style="background-color: black;">{{ $article->category->title }}</span>
+                <span class="badge badge-info" style="background-color: dodgerblue;">Автор: {{ $article->user->name }}</span>
                 @if($article->is_from_reader)
                     <span class="badge badge-info" style="background-color: red;">От читателя!</span>
                 @endif

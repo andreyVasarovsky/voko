@@ -1,7 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h2>Мои подписки</h2>
+            <h2 class="d-inline">Мои подписки</h2>
+            <a href="{{ route('public.subscriptions.article.index') }}" class="action d-inline" style="font-size: 18px;">
+                <i class="fas fa-eye"></i>
+            </a>
         </div>
         <div class="col-12">
             @if(Auth::user()->subscriptions->count())

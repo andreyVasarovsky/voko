@@ -4,18 +4,13 @@
     <div class="container mb-2">
         <div class="row">
             <div class="col-12 mb-2">
-                <h1 class="mb-2">
-                    Мой профиль
-                    <a href="{{ route('public.profile.edit', Auth::user()->id) }}" class="action">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </h1>
+                <h1 class="mb-2 d-inline"> Мой профиль </h1>
+                <a href="{{ route('public.profile.edit', Auth::user()->id) }}" class="action d-inline" style="font-size: 18px;">
+                    <i class="fas fa-edit"></i>
+                </a>
             </div>
             <div class="col-12">
                 Имя: {{ Auth::user()->name }}
-            </div>
-            <div class="col-12">
-
             </div>
         </div>
     </div>
