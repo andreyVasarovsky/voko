@@ -61,6 +61,7 @@
                     <div class="author">
                         Автор:
                         <a href="{{ route('public.user.show', $article->user->id) }}">{{ $article->user->name }}</a>
+                        (Кол-во подписчиков: {{ $article->user->subscribers->count() }})
                     </div>
                 </div>
             </div>

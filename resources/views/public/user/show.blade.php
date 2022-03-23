@@ -39,6 +39,9 @@
                     @endif
                 @endauth
             </div>
+            <div class="col-12">
+                <h5>(Кол-во подписчиков: {{ $author->subscribers->count() }})</h5>
+            </div>
         </div>
         @if($articles->count() > 0)
             @include('public.article.sort')
