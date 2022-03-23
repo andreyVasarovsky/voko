@@ -9,13 +9,31 @@
                     @if($author->id !== Auth::user()->id)
                         <div class="d-inline">
                             @if(Auth::user()->subscriptions->contains('subscribe_user_id', $author->id))
-                                <a href="" style="font-size: 32px;" class="text-secondary">
-                                    <i class="fas fa-minus-square"></i>
-                                </a>
+                                <form
+                                    action="{{ route('public.subscription.destroy',
+                                                Auth::user()
+                                                    ->subscriptions
+                                                    ->where('subscribe_user_id', $author->id)
+                                                    ->first()
+                                                    ->id) }}"
+                                    method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-secondary bg-transparent border-0"
+                                            style="font-size: 32px;">
+                                        <i class="fas fa-minus-square"></i>
+                                    </button>
+                                </form>
                             @else
-                                <a href="" style="font-size: 32px;" class="text-danger">
-                                    <i class="fas fa-plus-square"></i>
-                                </a>
+                                <form action="{{ route('public.subscription.store') }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="subscribe_user_id" value="{{ $author->id }}">
+                                    <button type="submit" class="text-danger bg-transparent border-0"
+                                            style="font-size: 32px;">
+                                        <i class="fas fa-plus-square"></i>
+                                    </button>
+                                </form>
                             @endif
                         </div>
                     @endif

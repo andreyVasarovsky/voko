@@ -81,6 +81,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Public', 'prefix' => '/'], fu
         Route::post('/store', 'StoreController')->name('public.like.store');
         Route::delete('/{like}', 'DestroyController')->name('public.like.destroy');
     });
+    Route::group(['namespace' => 'Subscription', 'prefix' => 'subscription', 'middleware' => ['auth']], function () {
+        Route::get('/store', function () { abort(404); });
+        Route::post('/store', 'StoreController')->name('public.subscription.store');
+        Route::delete('/{subscription}', 'DestroyController')->name('public.subscription.destroy');
+    });
     Route::middleware('is_editable_profile_self')->group(function () {
         Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
             Route::get('/{user}', 'IndexController')->name('public.profile.index');
