@@ -14,10 +14,14 @@
             <div class="col-12">
                 Имя: {{ Auth::user()->name }}
             </div>
+            <div class="col-12">
+
+            </div>
         </div>
     </div>
     @if(Auth::user()->can('reader_article_create'))
         @include('public.profile.article.index')
     @endif
     @include('public.article.liked')
+    @include('public.user.subscriptions')
 @endsection

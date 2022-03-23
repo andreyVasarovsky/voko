@@ -17,4 +17,8 @@ class Subscription extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function subscribe_user()
+    {
+        return $this->belongsTo(User::class, 'subscribe_user_id', 'id');
+    }
 }
