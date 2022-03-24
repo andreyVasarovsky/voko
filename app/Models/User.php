@@ -51,6 +51,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Like::class, 'user_id', 'id');
     }
 
+    public function articlesComments()
+    {
+        return Comment::whereIn('article_id', function($query){
+            $query->select('id')
+                ->from(with(new Article)->getTable())
+                ->where('user_id', $this->id);
+        })->get();
+    }
+
     public function sendEmailVerificationNotification()
     {
         $this->notify(new SendVerifyWithQueueNotification());

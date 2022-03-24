@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-12">
-                <h1 class="d-inline">Статьи пользователя: {{ $author->name }}</h1>
+                <h1 class="d-inline">Пользователь: {{ $author->name }}</h1>
                 @auth
                     @if($author->id !== Auth::user()->id)
                         <div class="d-inline">
@@ -39,11 +39,25 @@
                     @endif
                 @endauth
             </div>
-            <div class="col-12">
-                <h5>(Кол-во подписчиков: {{ $author->subscribers->count() }})</h5>
+            <div class="col-3">
+                <span style="font-size: 18px;"><i class="fas fa-plus-square text-danger"></i> Подписчики: {{ $author->subscribers->count() }}</span>
+            </div>
+            <div class="col-3">
+                <span style="font-size: 18px;"><i class="fas fa-align-justify"></i> Статьи: {{ $author->articles->count() }}</span>
+            </div>
+            <div class="col-3">
+                <span style="font-size: 18px;"><i class="fas fa-comment"></i> Комментариев: {{ $author->articlesComments()->count() }}</span>
+            </div>
+            <div class="col-3">
+                <span style="font-size: 18px;"><i class="fas fa-heart"></i> Любимых авторов: {{ $author->subscriptions->count() }}</span>
             </div>
         </div>
         @if($articles->count() > 0)
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="d-inline">Его статьи</h1>
+                </div>
+            </div>
             @include('public.article.sort')
             <div class="row">
                 @include('public.article.articles')
