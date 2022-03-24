@@ -19,4 +19,5 @@
     @endif
     @include('public.article.liked')
     @include('public.user.subscriptions')
+    @include('public.user.subscribers')
 @endsection

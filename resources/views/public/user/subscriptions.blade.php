@@ -40,7 +40,7 @@
                 </table>
             @else
                 <div class="alert alert-dark" role="alert">
-                    Вы пока не поставили ни одного лайка!
+                    Вы пока не подписались ни на кого!
                 </div>
             @endif
         </div>
